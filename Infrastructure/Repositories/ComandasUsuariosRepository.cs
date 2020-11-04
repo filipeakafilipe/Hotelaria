@@ -1,12 +1,14 @@
 ﻿using Hotelaria.Domain.Interfaces;
 using Hotelaria.Infrastructure.Mapping;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class ComandasUsuarios : BaseRepository, IRepository<ComandasUsuarios>
+    public class ComandasUsuariosRepository : BaseRepository, IRepository<ComandasUsuarios>
     {
         public void Adicionar(ComandasUsuarios entidade)
         {
@@ -21,6 +23,11 @@ namespace Hotelaria.Infrastructure.Repositories
         public ComandasUsuarios Get(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<ComandasUsuarios> GetAll()
+        {
+            return db.ComandasUsuarios.ToList();
         }
 
         public void Remover(int id)

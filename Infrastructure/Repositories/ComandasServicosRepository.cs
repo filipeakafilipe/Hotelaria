@@ -23,6 +23,11 @@ namespace Hotelaria.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
+        public IEnumerable<ComandasServicos> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Remover(int id)
         {
             throw new NotImplementedException();

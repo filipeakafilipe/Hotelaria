@@ -10,5 +10,6 @@ namespace Hotelaria.Domain.Interfaces
         void Adicionar(T entidade);
         void Remover(int id);
         void Atualizar(int id, T entidade);
+        public IEnumerable<T> GetAll();
     }
 }

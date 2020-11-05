@@ -6,24 +6,24 @@ using System.Text;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class ComandasRepository : BaseRepository, IRepository<Comandas>
+    public class ComandasRepository : BaseRepository, IRepository<Comanda>
     {
-        public void Adicionar(Comandas entidade)
+        public void Adicionar(Comanda entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, Comandas entidade)
+        public void Atualizar(int id, Comanda entidade)
         {
             throw new NotImplementedException();
         }
 
-        public Comandas Get(int id)
+        public Comanda Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Comandas> GetAll()
+        public IEnumerable<Comanda> GetAll()
         {
             throw new NotImplementedException();
         }

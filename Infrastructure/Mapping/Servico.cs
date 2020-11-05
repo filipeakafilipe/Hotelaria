@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hotelaria.Infrastructure.Mapping
 {
-    public partial class Servicos
+    public class Servico
     {
-        public Servicos()
-        {
-            ComandasServicos = new HashSet<ComandasServicos>();
-        }
-
         public int Id { get; set; }
+        [MaxLength(40)]
         public string Nome { get; set; }
+        [MaxLength(200)]
         public string Observacoes { get; set; }
         public decimal Preco { get; set; }
-
-        public virtual ICollection<ComandasServicos> ComandasServicos { get; set; }
     }
 }

@@ -8,24 +8,24 @@ using System.Text;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class UsuariosRepository : BaseRepository, IRepository<Usuarios>
+    public class UsuariosRepository : BaseRepository, IRepository<Usuario>
     {
-        public void Adicionar(Usuarios entidade)
+        public void Adicionar(Usuario entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, Usuarios entidade)
+        public void Atualizar(int id, Usuario entidade)
         {
             throw new NotImplementedException();
         }
 
-        public Usuarios Get(int id)
+        public Usuario Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Usuarios> GetAll()
+        public IEnumerable<Usuario> GetAll()
         {
             return db.Usuarios.ToList();
         }

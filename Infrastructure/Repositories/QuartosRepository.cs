@@ -6,24 +6,24 @@ using System.Text;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class QuartosRepository : BaseRepository, IRepository<Quartos>
+    public class QuartosRepository : BaseRepository, IRepository<Quarto>
     {
-        public void Adicionar(Quartos entidade)
+        public void Adicionar(Quarto entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, Quartos entidade)
+        public void Atualizar(int id, Quarto entidade)
         {
             throw new NotImplementedException();
         }
 
-        public Quartos Get(int id)
+        public Quarto Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Quartos> GetAll()
+        public IEnumerable<Quarto> GetAll()
         {
             throw new NotImplementedException();
         }

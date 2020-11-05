@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Hotelaria.Infrastructure.Mapping
 {
-    public partial class Comandas
+    public class Comanda
     {
         public int Id { get; set; }
         public int Dias { get; set; }

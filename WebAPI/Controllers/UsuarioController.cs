@@ -24,6 +24,11 @@ namespace Hotelaria.WebAPI.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Cadastrar novo usuário
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post(CadastraUsuarioCommand command)
         {

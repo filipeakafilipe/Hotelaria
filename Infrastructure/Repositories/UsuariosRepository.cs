@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hotelaria.Infrastructure.Mapping;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class UsuariosRepository : BaseRepository, IRepository<UsuarioVO>
+    public class UsuariosRepository : BaseRepository, IUsuariosRepository<UsuarioVO>
     {
         public void Adicionar(UsuarioVO entidadeVO)
         {
@@ -23,7 +24,21 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public void Atualizar(int id, UsuarioVO entidade)
         {
-            throw new NotImplementedException();
+            var usuario = mapper.Map<Usuario>(Get(id));
+
+            if (usuario != null)
+            {
+                usuario.Cpf = entidade.Cpf;
+                usuario.Email = entidade.Email;
+                usuario.Login = entidade.Login;
+                usuario.Nome = entidade.Nome;
+                usuario.Senha = entidade.Senha;
+                usuario.Telefone = entidade.Telefone;
+
+                db.Entry(usuario).State = EntityState.Modified;
+
+                db.SaveChanges();
+            }
         }
 
         public UsuarioVO Get(int id)
@@ -31,14 +46,29 @@ namespace Hotelaria.Infrastructure.Repositories
             return mapper.Map<UsuarioVO>(db.Usuarios.FirstOrDefault(u => u.Id == id));
         }
 
-        public IEnumerable<UsuarioVO> GetAll()
+        public List<UsuarioVO> Get(string cpf)
         {
-            return mapper.Map<IEnumerable<UsuarioVO>>(db.Usuarios.ToList());
+            //var a = mapper.Map<List<UsuarioVO>>(db.Usuarios.Where(u => u.Cpf == cpf).ToList());
+            //return a;
+            var a = db.Usuarios.Where(u => u.Cpf == cpf).ToList();
+            return mapper.Map<List<UsuarioVO>>(a);
+        }
+
+        public List<UsuarioVO> GetAll()
+        {
+            return mapper.Map<List<UsuarioVO>>(db.Usuarios.ToList());
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            var usuario = mapper.Map<Usuario>(Get(id));
+
+            if (usuario != null)
+            {
+                db.Usuarios.Remove(usuario);
+
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class ComandasRepository : BaseRepository, IRepository<ComandaVO>
+    public class ComandasRepository : BaseRepository, IComandasRepository<ComandaVO>
     {
         public void Adicionar(ComandaVO entidade)
         {
@@ -24,7 +24,7 @@ namespace Hotelaria.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ComandaVO> GetAll()
+        public List<ComandaVO> GetAll()
         {
             throw new NotImplementedException();
         }

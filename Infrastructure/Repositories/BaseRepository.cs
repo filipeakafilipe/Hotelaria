@@ -19,9 +19,10 @@ namespace Hotelaria.Infrastructure.Repositories
             db = new HotelariaContext();
 
             var config = new MapperConfiguration(cfg => {
+                cfg.AllowNullCollections = true;
                 cfg.CreateMap<Usuario, UsuarioVO>();
                 cfg.CreateMap<UsuarioVO, Usuario>();
-                cfg.CreateMap<IEnumerable<Usuario>, IEnumerable<UsuarioVO>>();
+                //cfg.CreateMap<List<Usuario>, List<UsuarioVO>>();
                 });
 
             mapper = new Mapper(config);

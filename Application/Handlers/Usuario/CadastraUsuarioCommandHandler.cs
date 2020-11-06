@@ -14,9 +14,9 @@ namespace Hotelaria.Application.Handlers
     public class CadastraUsuarioCommandHandler : IRequestHandler<CadastraUsuarioCommand, string>
     {
         private readonly IMediator _mediator;
-        private readonly IRepository<UsuarioVO> _repository;
+        private readonly IUsuariosRepository<UsuarioVO> _repository;
 
-        public CadastraUsuarioCommandHandler(IMediator mediator, IRepository<UsuarioVO> repository)
+        public CadastraUsuarioCommandHandler(IMediator mediator, IUsuariosRepository<UsuarioVO> repository)
         {
             this._mediator = mediator;
             this._repository = repository;
@@ -54,16 +54,6 @@ namespace Hotelaria.Application.Handlers
             }
             catch (Exception ex)
             {
-                await _mediator.Publish(new UsuarioCriadoNotification
-                {
-                    Id = request.Id,
-                    Cpf = request.Cpf,
-                    Email = request.Email,
-                    Login = request.Login,
-                    Nome = request.Nome,
-                    Senha = request.Nome,
-                    Telefone = request.Nome
-                });
                 await _mediator.Publish(new ErroNotification { Excecao = ex.Message, PilhaErro = ex.StackTrace });
                 return await Task.FromResult("Ocorreu um erro no momento da criação");
             }

@@ -10,18 +10,18 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Application.Handlers
 {
-    public class GetUsuarioQueryHandler : IRequestHandler<GetUsuarioQuery, UsuarioVO>
+    public class GetUsuarioByIdQueryHandler : IRequestHandler<GetUsuarioByIdQuery, UsuarioVO>
     {
         private readonly IMediator _mediator;
-        private readonly IRepository<UsuarioVO> _repository;
+        private readonly IUsuariosRepository<UsuarioVO> _repository;
 
-        public GetUsuarioQueryHandler(IMediator mediator, IRepository<UsuarioVO> repository)
+        public GetUsuarioByIdQueryHandler(IMediator mediator, IUsuariosRepository<UsuarioVO> repository)
         {
             this._mediator = mediator;
             this._repository = repository;
         }
 
-        public async Task<UsuarioVO> Handle(GetUsuarioQuery request, CancellationToken cancellationToken)
+        public async Task<UsuarioVO> Handle(GetUsuarioByIdQuery request, CancellationToken cancellationToken)
         {
             return _repository.Get(request.Id);
         }

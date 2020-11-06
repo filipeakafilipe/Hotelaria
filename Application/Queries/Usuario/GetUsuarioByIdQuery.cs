@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Hotelaria.Application.Queries
 {
-    public class GetUsuarioQuery : IRequest<UsuarioVO>
+    public class GetUsuarioByIdQuery : IRequest<UsuarioVO>
     {
-        public GetUsuarioQuery(int id)
+        public GetUsuarioByIdQuery(int id)
         {
             Id = id;
         }

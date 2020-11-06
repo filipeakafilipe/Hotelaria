@@ -15,11 +15,16 @@ namespace Hotelaria.Infrastructure.Repositories
     {
         public void Adicionar(UsuarioVO entidadeVO)
         {
-            var entidade = mapper.Map<Usuario>(entidadeVO);
+            var user = GetByLogin(entidadeVO.Login);
 
-            db.Usuarios.Add(entidade);
+            if (user == null)
+            {
+                var entidade = mapper.Map<Usuario>(entidadeVO);
 
-            db.SaveChanges();
+                db.Usuarios.Add(entidade);
+
+                db.SaveChanges();
+            }
         }
 
         public void Atualizar(int id, UsuarioVO entidade)
@@ -57,6 +62,11 @@ namespace Hotelaria.Infrastructure.Repositories
         public List<UsuarioVO> GetAll()
         {
             return mapper.Map<List<UsuarioVO>>(db.Usuarios.ToList());
+        }
+
+        public UsuarioVO GetByLogin(string login)
+        {
+            return mapper.Map<UsuarioVO>(db.Usuarios.FirstOrDefault(u => u.Login == login));
         }
 
         public void Remover(int id)

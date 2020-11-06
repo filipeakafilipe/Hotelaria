@@ -14,6 +14,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Hotelaria.Infrastructure.Context;
+using Hotelaria.Domain.Interfaces;
+using Hotelaria.Application.Models;
+using Hotelaria.Infrastructure.Repositories;
+using MediatR;
+using Hotelaria.Application.Commands;
 
 namespace WebAPI
 {
@@ -55,6 +60,8 @@ namespace WebAPI
             });
 
             Bootstrapper.UseHotelariaDbContext(services, Configuration);
+            services.AddMediatR(typeof(CadastraUsuarioCommand).GetTypeInfo().Assembly);
+            services.AddSingleton<IRepository<Usuario>, UsuariosRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

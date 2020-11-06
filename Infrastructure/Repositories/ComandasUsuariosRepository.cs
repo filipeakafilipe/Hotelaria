@@ -1,10 +1,11 @@
 ﻿using Hotelaria.Domain.Interfaces;
-using Hotelaria.Infrastructure.Mapping;
+using Hotelaria.Application.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
@@ -27,7 +28,7 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public IEnumerable<ComandasUsuarios> GetAll()
         {
-            return db.ComandasUsuarios.ToList();
+            throw new NotImplementedException();
         }
 
         public void Remover(int id)

@@ -1,8 +1,9 @@
 ﻿using Hotelaria.Domain.Interfaces;
-using Hotelaria.Infrastructure.Mapping;
+using Hotelaria.Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {

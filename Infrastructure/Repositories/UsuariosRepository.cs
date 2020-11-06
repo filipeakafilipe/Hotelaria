@@ -1,10 +1,11 @@
 ﻿using Hotelaria.Domain.Interfaces;
-using Hotelaria.Infrastructure.Mapping;
+using Hotelaria.Application.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
@@ -12,7 +13,9 @@ namespace Hotelaria.Infrastructure.Repositories
     {
         public void Adicionar(Usuario entidade)
         {
-            throw new NotImplementedException();
+            db.Usuarios.Add(entidade);
+
+            db.SaveChanges();
         }
 
         public void Atualizar(int id, Usuario entidade)
@@ -27,7 +30,7 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public IEnumerable<Usuario> GetAll()
         {
-            return db.Usuarios.ToList();
+            throw new NotImplementedException();
         }
 
         public void Remover(int id)

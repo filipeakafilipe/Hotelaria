@@ -19,5 +19,19 @@ namespace Hotelaria.Infrastructure.Mapping
         public string Telefone { get; set; }
         [MaxLength(14)]
         public string Cpf { get; set; }
+
+        public static implicit operator Usuario(Application.Models.Usuario usuario)
+        {
+            return new Usuario
+            {
+                Id = usuario.Id,
+                Cpf = usuario.Cpf,
+                Email = usuario.Email,
+                Login = usuario.Login,
+                Nome = usuario.Nome,
+                Senha = usuario.Senha,
+                Telefone = usuario.Telefone
+            };
+        }
     }
 }

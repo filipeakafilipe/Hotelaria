@@ -22,7 +22,6 @@ namespace Hotelaria.Infrastructure.Repositories
                 cfg.AllowNullCollections = true;
                 cfg.CreateMap<Usuario, UsuarioVO>();
                 cfg.CreateMap<UsuarioVO, Usuario>();
-                //cfg.CreateMap<List<Usuario>, List<UsuarioVO>>();
                 });
 
             mapper = new Mapper(config);

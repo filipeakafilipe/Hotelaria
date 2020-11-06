@@ -55,10 +55,7 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public List<UsuarioVO> Get(string cpf)
         {
-            //var a = mapper.Map<List<UsuarioVO>>(db.Usuarios.Where(u => u.Cpf == cpf).ToList());
-            //return a;
-            var a = db.Usuarios.Where(u => u.Cpf == cpf).ToList();
-            return mapper.Map<List<UsuarioVO>>(a);
+            return mapper.Map<List<UsuarioVO>>(db.Usuarios.Where(u => u.Cpf == cpf).ToList());
         }
 
         public List<UsuarioVO> GetAll()

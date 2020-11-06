@@ -75,7 +75,31 @@ namespace Hotelaria.WebAPI.Controllers
 
                 return Ok(users);
             }
-            catch (Exception ex)
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Retorna todos usuários cadastrados no sistema
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("todos")]
+        public async Task<ActionResult<List<UsuarioVO>>> GetTodos()
+        {
+            try
+            {
+                var users = await _mediator.Send(new GetTodosUsuariosQuery());
+
+                if (users.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(users);
+            }
+            catch (Exception)
             {
                 return BadRequest();
             }

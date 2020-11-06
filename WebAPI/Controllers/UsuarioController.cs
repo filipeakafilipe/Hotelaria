@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Hotelaria.Application.Commands;
 using Hotelaria.Application.Models;
+using Hotelaria.Application.Queries;
 using Hotelaria.Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,31 @@ namespace Hotelaria.WebAPI.Controllers
         {
             _mediator = mediator;
             _context = context;
+        }
+
+        /// <summary>
+        /// Retorna um usuário por seu Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UsuarioVO>> Get(int id)
+        {
+            try
+            {
+                var user = await _mediator.Send(new GetUsuarioQuery(id));
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(user);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         /// <summary>

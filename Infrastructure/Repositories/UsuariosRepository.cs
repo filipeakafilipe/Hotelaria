@@ -28,12 +28,12 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public UsuarioVO Get(int id)
         {
-            throw new NotImplementedException();
+            return mapper.Map<UsuarioVO>(db.Usuarios.FirstOrDefault(u => u.Id == id));
         }
 
         public IEnumerable<UsuarioVO> GetAll()
         {
-            throw new NotImplementedException();
+            return mapper.Map<IEnumerable<UsuarioVO>>(db.Usuarios.ToList());
         }
 
         public void Remover(int id)

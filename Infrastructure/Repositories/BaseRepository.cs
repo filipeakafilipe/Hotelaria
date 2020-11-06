@@ -21,6 +21,7 @@ namespace Hotelaria.Infrastructure.Repositories
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Usuario, UsuarioVO>();
                 cfg.CreateMap<UsuarioVO, Usuario>();
+                cfg.CreateMap<IEnumerable<Usuario>, IEnumerable<UsuarioVO>>();
                 });
 
             mapper = new Mapper(config);

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hotelaria.Application.Models
 {
-    public class Comanda
+    public class ComandaVO
     {
         public int Id { get; set; }
         public int Dias { get; set; }

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Hotelaria.Application.Models
 {
-    public class ComandasServicos
+    public class ComandasServicosVO
     {
         public int Id { get; set; }
         public int Quantidade { get; set; }
-        public Comanda Comanda { get; set; }
-        public Servico Servico { get; set; }
+        public ComandaVO Comanda { get; set; }
+        public ServicoVO Servico { get; set; }
     }
 }

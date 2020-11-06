@@ -9,24 +9,24 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class ComandasUsuariosRepository : BaseRepository, IRepository<ComandasUsuarios>
+    public class ComandasUsuariosRepository : BaseRepository, IRepository<ComandasUsuariosVO>
     {
-        public void Adicionar(ComandasUsuarios entidade)
+        public void Adicionar(ComandasUsuariosVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, ComandasUsuarios entidade)
+        public void Atualizar(int id, ComandasUsuariosVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public ComandasUsuarios Get(int id)
+        public ComandasUsuariosVO Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ComandasUsuarios> GetAll()
+        public IEnumerable<ComandasUsuariosVO> GetAll()
         {
             throw new NotImplementedException();
         }

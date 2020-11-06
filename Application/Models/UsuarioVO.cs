@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hotelaria.Application.Models
 {
-    public class Usuario
+    public class UsuarioVO
     {
         public int Id { get; set; }
         public string Login { get; set; }

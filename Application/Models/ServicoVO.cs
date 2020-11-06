@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Hotelaria.Application.Models
 {
-    public class Quarto
+    public class ServicoVO
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+        public string Observacoes { get; set; }
         public decimal Preco { get; set; }
     }
 }

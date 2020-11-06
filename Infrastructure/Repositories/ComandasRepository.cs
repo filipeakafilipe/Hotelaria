@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class ComandasRepository : BaseRepository, IRepository<Comanda>
+    public class ComandasRepository : BaseRepository, IRepository<ComandaVO>
     {
-        public void Adicionar(Comanda entidade)
+        public void Adicionar(ComandaVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, Comanda entidade)
+        public void Atualizar(int id, ComandaVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public Comanda Get(int id)
+        public ComandaVO Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Comanda> GetAll()
+        public IEnumerable<ComandaVO> GetAll()
         {
             throw new NotImplementedException();
         }

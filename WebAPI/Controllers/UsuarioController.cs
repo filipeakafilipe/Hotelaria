@@ -16,9 +16,14 @@ namespace Hotelaria.WebAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IRepository<Usuario> _context;
+        private readonly IRepository<UsuarioVO> _context;
 
-        public UsuarioController(IMediator mediator, IRepository<Usuario> context)
+        /// <summary>
+        /// Responsável por métodos referentes ao Usuário
+        /// </summary>
+        /// <param name="mediator"></param>
+        /// <param name="context"></param>
+        public UsuarioController(IMediator mediator, IRepository<UsuarioVO> context)
         {
             _mediator = mediator;
             _context = context;

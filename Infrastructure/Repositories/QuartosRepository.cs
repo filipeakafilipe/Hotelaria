@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class QuartosRepository : BaseRepository, IRepository<Quarto>
+    public class QuartosRepository : BaseRepository, IRepository<QuartoVO>
     {
-        public void Adicionar(Quarto entidade)
+        public void Adicionar(QuartoVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, Quarto entidade)
+        public void Atualizar(int id, QuartoVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public Quarto Get(int id)
+        public QuartoVO Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Quarto> GetAll()
+        public IEnumerable<QuartoVO> GetAll()
         {
             throw new NotImplementedException();
         }

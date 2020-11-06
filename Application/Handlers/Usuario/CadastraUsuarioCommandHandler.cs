@@ -14,9 +14,9 @@ namespace Hotelaria.Application.Handlers
     public class CadastraUsuarioCommandHandler : IRequestHandler<CadastraUsuarioCommand, string>
     {
         private readonly IMediator _mediator;
-        private readonly IRepository<Usuario> _repository;
+        private readonly IRepository<UsuarioVO> _repository;
 
-        public CadastraUsuarioCommandHandler(IMediator mediator, IRepository<Usuario> repository)
+        public CadastraUsuarioCommandHandler(IMediator mediator, IRepository<UsuarioVO> repository)
         {
             this._mediator = mediator;
             this._repository = repository;
@@ -24,7 +24,7 @@ namespace Hotelaria.Application.Handlers
 
         public async Task<string> Handle(CadastraUsuarioCommand request, CancellationToken cancellationToken)
         {
-            var usuario = new Usuario
+            var usuario = new UsuarioVO
             {
                 Id = request.Id,
                 Cpf = request.Cpf,

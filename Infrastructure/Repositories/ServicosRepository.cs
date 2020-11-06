@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
-    public class ServicosRepository : BaseRepository, IRepository<Servico>
+    public class ServicosRepository : BaseRepository, IRepository<ServicoVO>
     {
-        public void Adicionar(Servico entidade)
+        public void Adicionar(ServicoVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public void Atualizar(int id, Servico entidade)
+        public void Atualizar(int id, ServicoVO entidade)
         {
             throw new NotImplementedException();
         }
 
-        public Servico Get(int id)
+        public ServicoVO Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Servico> GetAll()
+        public IEnumerable<ServicoVO> GetAll()
         {
             throw new NotImplementedException();
         }

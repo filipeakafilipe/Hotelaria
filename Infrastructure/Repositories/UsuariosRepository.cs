@@ -17,14 +17,16 @@ namespace Hotelaria.Infrastructure.Repositories
         {
             var user = GetByLogin(entidadeVO.Login);
 
-            if (user == null)
+            if (user != null)
             {
-                var entidade = mapper.Map<Usuario>(entidadeVO);
-
-                db.Usuarios.Add(entidade);
-
-                db.SaveChanges();
+                throw new Exception();
             }
+
+            var entidade = mapper.Map<Usuario>(entidadeVO);
+
+            db.Usuarios.Add(entidade);
+
+            db.SaveChanges();
         }
 
         public void Atualizar(int id, UsuarioVO entidade)

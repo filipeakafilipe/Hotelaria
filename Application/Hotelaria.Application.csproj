@@ -15,9 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Commands\Servico\" />
-    <Folder Include="Handlers\Servico\" />
     <Folder Include="Notifications\Servico\" />
-    <Folder Include="Queries\Servico\" />
   </ItemGroup>
 
 </Project>

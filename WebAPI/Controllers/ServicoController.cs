@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotelaria.Application.Models;
+using Hotelaria.Application.Queries;
+using Hotelaria.Domain.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,5 +15,67 @@ namespace Hotelaria.WebAPI.Controllers
     [ApiController]
     public class ServicoController : ControllerBase
     {
+        private readonly IMediator _mediator;
+        private readonly IServicosRepository<ServicoVO> _context;
+
+        /// <summary>
+        /// Responsável por endpoints referentes ao Usuário
+        /// </summary>
+        /// <param name="mediator"></param>
+        /// <param name="context"></param>
+        public ServicoController(IMediator mediator, IServicosRepository<ServicoVO> context)
+        {
+            _mediator = mediator;
+            _context = context;
+        }
+
+        /// <summary>
+        /// Retorna serviço por seu id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServicoVO>> GetById(int id)
+        {
+            try
+            {
+                var servico = await _mediator.Send(new GetServicoByIdQuery(id));
+
+                if (servico == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(servico);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Retorna todos serviços
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("todos")]
+        public async Task<ActionResult<List<ServicoVO>>> GetTodos()
+        {
+            try
+            {
+                var servicos = await _mediator.Send(new GetTodosServicosQuery());
+
+                if (servicos.Count == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(servicos);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

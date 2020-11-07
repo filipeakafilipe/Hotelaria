@@ -67,6 +67,7 @@ namespace WebAPI
             Bootstrapper.UseHotelariaDbContext(services, Configuration);
             services.AddMediatR(typeof(CadastraUsuarioCommand).GetTypeInfo().Assembly);
             services.AddSingleton<IUsuariosRepository<UsuarioVO>, UsuariosRepository>();
+            services.AddSingleton<IServicosRepository<ServicoVO>, ServicosRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

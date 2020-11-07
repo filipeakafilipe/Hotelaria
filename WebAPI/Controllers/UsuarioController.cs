@@ -22,7 +22,7 @@ namespace Hotelaria.WebAPI.Controllers
         private readonly IUsuariosRepository<UsuarioVO> _context;
 
         /// <summary>
-        /// Responsável por métodos referentes ao Usuário
+        /// Responsável por endpoints referentes ao Usuário
         /// </summary>
         /// <param name="mediator"></param>
         /// <param name="context"></param>

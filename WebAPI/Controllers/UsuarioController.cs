@@ -37,7 +37,7 @@ namespace Hotelaria.WebAPI.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<UsuarioVO>> Get(int id)
+        public async Task<ActionResult<UsuarioVO>> GetById(int id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace Hotelaria.WebAPI.Controllers
         /// <param name="cpf"></param>
         /// <returns></returns>
         [HttpGet("cpf/{cpf}")]
-        public async Task<ActionResult<List<UsuarioVO>>> Get(string cpf)
+        public async Task<ActionResult<List<UsuarioVO>>> GetByCpf(string cpf)
         {
             try
             {
@@ -74,6 +74,31 @@ namespace Hotelaria.WebAPI.Controllers
                 }
 
                 return Ok(users);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Retorna usuário por seu login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        [HttpGet("login/{login}")]
+        public async Task<ActionResult<UsuarioVO>> GetByLogin(string login)
+        {
+            try
+            {
+                var user = await _mediator.Send(new GetUsuarioByLoginQuery(login));
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(user);
             }
             catch (Exception)
             {

@@ -4,34 +4,53 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Hotelaria.Infrastructure.Mapping;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
     public class QuartosRepository : BaseRepository, IQuartosRepository<QuartoVO>
     {
-        public void Adicionar(QuartoVO entidade)
+        public void Adicionar(QuartoVO entidadeVO)
         {
-            throw new NotImplementedException();
+            db.Quartos.Add(mapper.Map<Quarto>(entidadeVO));
+
+            db.SaveChanges();
         }
 
-        public void Atualizar(int id, QuartoVO entidade)
+        public void Atualizar(int id, QuartoVO entidadeVO)
         {
-            throw new NotImplementedException();
+            var quarto = mapper.Map<Quarto>(Get(id));
+
+            quarto.Nome = entidadeVO.Nome;
+            quarto.Preco = entidadeVO.Preco;
+
+            db.Entry(quarto).State = EntityState.Modified;
+
+            db.SaveChanges();
         }
 
         public QuartoVO Get(int id)
         {
-            throw new NotImplementedException();
+            return mapper.Map<QuartoVO>(db.Quartos.FirstOrDefault(q => q.Id == id));
         }
 
         public List<QuartoVO> GetAll()
         {
-            throw new NotImplementedException();
+            return mapper.Map<List<QuartoVO>>(db.Quartos.ToList());
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            var quarto = mapper.Map<Quarto>(Get(id));
+
+            if (quarto != null)
+            {
+                db.Quartos.Remove(quarto);
+
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -4,34 +4,56 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Hotelaria.Infrastructure.Mapping;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Hotelaria.Infrastructure.Repositories
 {
     public class ComandasServicosRepository : BaseRepository, IComandasServicosRepository<ComandasServicosVO>
     {
-        public void Adicionar(ComandasServicosVO entidade)
+        public void Adicionar(ComandasServicosVO entidadeVO)
         {
-            throw new NotImplementedException();
+            db.ComandasServicos.Add(mapper.Map<ComandasServicos>(entidadeVO));
+
+            db.SaveChanges();
         }
 
-        public void Atualizar(int id, ComandasServicosVO entidade)
+        public void Atualizar(int id, ComandasServicosVO entidadeVO)
         {
-            throw new NotImplementedException();
+            var comandaServico = mapper.Map<ComandasServicos>(Get(id));
+
+            comandaServico.Comanda = mapper.Map<Comanda>(entidadeVO.Comanda);
+            comandaServico.Servico = mapper.Map<Servico>(entidadeVO.Servico);
+            comandaServico.ComandaId = entidadeVO.ComandaId;
+            comandaServico.ServicoId = entidadeVO.ServicoId;
+            comandaServico.Quantidade = entidadeVO.Quantidade;
+
+            db.Entry(comandaServico).State = EntityState.Modified;
+
+            db.SaveChanges();
         }
 
         public ComandasServicosVO Get(int id)
         {
-            throw new NotImplementedException();
+            return mapper.Map<ComandasServicosVO>(db.ComandasServicos.Include(c => c.Comanda).Include(c => c.Servico).FirstOrDefault(c => c.Id == id));
         }
 
         public List<ComandasServicosVO> GetAll()
         {
-            throw new NotImplementedException();
+            return mapper.Map<List<ComandasServicosVO>>(db.ComandasServicos.Include(c => c.Comanda).Include(c => c.Servico).ToList());
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            var comandaServico = mapper.Map<ComandasServicos>(Get(id));
+
+            if (comandaServico != null)
+            {
+                db.ComandasServicos.Remove(comandaServico);
+
+                db.SaveChanges();
+            }
         }
     }
 }

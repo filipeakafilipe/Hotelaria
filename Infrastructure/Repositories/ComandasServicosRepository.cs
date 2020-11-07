@@ -61,6 +61,10 @@ namespace Hotelaria.Infrastructure.Repositories
 
                 db.SaveChanges();
             }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
     }
 }

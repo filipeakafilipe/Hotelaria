@@ -68,7 +68,7 @@ namespace Hotelaria.WebAPI.Controllers
             {
                 var users = await _mediator.Send(new GetUsuarioByCpfQuery(cpf));
 
-                if(users.Count == 0)
+                if (users.Count == 0)
                 {
                     return NotFound();
                 }
@@ -165,7 +165,33 @@ namespace Hotelaria.WebAPI.Controllers
 
                 var response = await _mediator.Send(command);
 
-                if(response.Contains("não encontrado"))
+                if (response.Contains("não encontrado"))
+                {
+                    return NotFound();
+                }
+
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Deletar as informações de um usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            try
+            {
+                var response = await _mediator.Send(new DeletaUsuarioCommand { Id = id });
+
+                if (response.Contains("não encontrado"))
                 {
                     return NotFound();
                 }

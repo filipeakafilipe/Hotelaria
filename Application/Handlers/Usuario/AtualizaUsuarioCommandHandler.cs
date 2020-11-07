@@ -1,7 +1,6 @@
 ﻿using Hotelaria.Application.Commands;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Notifications;
-using Hotelaria.Application.Notifications.Usuario;
 using Hotelaria.Domain.Interfaces;
 using MediatR;
 using System;

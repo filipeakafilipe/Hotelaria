@@ -1,5 +1,4 @@
 ﻿using Hotelaria.Application.Notifications;
-using Hotelaria.Application.Notifications.Usuario;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,6 +23,14 @@ namespace Hotelaria.Application.EventHandlers
             return Task.Run(() =>
             {
                 Console.WriteLine($"ALTERAÇÃO: '{notification.Id} - {notification.Cpf} - {notification.Nome} - {notification.Telefone} - {notification.Email} - {notification.Login} - {notification.Senha}'");
+            });
+        }
+
+        public Task Handle(UsuarioExcluidoNotification notification, CancellationToken cancellationToken)
+        {
+            return Task.Run(() =>
+            {
+                Console.WriteLine($"EXCLUSAO: '{notification.Id}'");
             });
         }
     }

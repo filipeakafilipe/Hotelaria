@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Hotelaria.Application.Notifications.Usuario
+namespace Hotelaria.Application.Notifications
 {
     public class UsuarioAtualizadoNotification : INotification
     {

@@ -57,7 +57,7 @@ namespace Hotelaria.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna todos serviços anexados a comandas
+        /// Retorna todos serviços anexadas a comandas
         /// </summary>
         /// <returns></returns>
         [HttpGet("todos")]

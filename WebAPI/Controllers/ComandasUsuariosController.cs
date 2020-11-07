@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotelaria.Application.Commands;
+using Hotelaria.Application.Messages;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Queries;
 using Hotelaria.Domain.Interfaces;
@@ -56,7 +58,7 @@ namespace Hotelaria.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna todos usuários anexadas a comandas
+        /// Retorna todos usuários anexados a comandas
         /// </summary>
         /// <returns></returns>
         [HttpGet("todos")]
@@ -79,30 +81,30 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Cadastrar novo usuário em uma comanda
-        ///// </summary>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpPost]
-        //public async Task<IActionResult> Post(CadastraComandaUsuarioCommand command)
-        //{
-        //    try
-        //    {
-        //        var response = await _mediator.Send(command);
+        /// <summary>
+        /// Cadastrar novo usuário em uma comanda
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Post(CadastraComandaUsuarioCommand command)
+        {
+            try
+            {
+                var response = await _mediator.Send(command);
 
-        //        if (response == ResultadoOperacaoMessage.ErroInterno)
-        //        {
-        //            return BadRequest();
-        //        }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         ///// <summary>
         ///// Atualiza as informações de um usuário de uma comanda

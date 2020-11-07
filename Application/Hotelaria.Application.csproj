@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Domain\Hotelaria.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\Comanda\" />
+  </ItemGroup>
+
 </Project>

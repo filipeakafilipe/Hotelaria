@@ -69,6 +69,7 @@ namespace WebAPI
             services.AddSingleton<IUsuariosRepository<UsuarioVO>, UsuariosRepository>();
             services.AddSingleton<IServicosRepository<ServicoVO>, ServicosRepository>();
             services.AddSingleton<IQuartosRepository<QuartoVO>, QuartosRepository>();
+            services.AddSingleton<IComandasRepository<ComandaVO>, ComandasRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

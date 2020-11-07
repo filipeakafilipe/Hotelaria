@@ -129,30 +129,30 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Deletar as informações de um quarto
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> Deletar(int id)
-        //{
-        //    try
-        //    {
-        //        var response = await _mediator.Send(new DeletaQuartoCommand { Id = id });
+        /// <summary>
+        /// Deletar as informações de um quarto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            try
+            {
+                var response = await _mediator.Send(new DeletaQuartoCommand { Id = id });
 
-        //        if (response == ResultadoOperacaoMessage.NaoEncontrado)
-        //        {
-        //            return NotFound();
-        //        }
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
+                {
+                    return NotFound();
+                }
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

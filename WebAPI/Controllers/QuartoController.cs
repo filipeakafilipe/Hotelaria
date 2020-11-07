@@ -101,33 +101,33 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Atualiza as informações de um quarto
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpPatch("{id}")]
-        //public async Task<ActionResult> Atualizar(int id, AtualizaQuartoCommand command)
-        //{
-        //    try
-        //    {
-        //        command.Id = id;
+        /// <summary>
+        /// Atualiza as informações de um quarto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Atualizar(int id, AtualizaQuartoCommand command)
+        {
+            try
+            {
+                command.Id = id;
 
-        //        var response = await _mediator.Send(command);
+                var response = await _mediator.Send(command);
 
-        //        if (response == ResultadoOperacaoMessage.NaoEncontrado)
-        //        {
-        //            return NotFound();
-        //        }
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
+                {
+                    return NotFound();
+                }
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         ///// <summary>
         ///// Deletar as informações de um quarto

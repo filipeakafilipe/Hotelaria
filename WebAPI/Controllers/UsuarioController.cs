@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hotelaria.Application.Commands;
+using Hotelaria.Application.Messages;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Queries;
 using Hotelaria.Application.Queries.Usuario;
@@ -165,7 +166,7 @@ namespace Hotelaria.WebAPI.Controllers
 
                 var response = await _mediator.Send(command);
 
-                if (response.Contains("não encontrado"))
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
                 {
                     return NotFound();
                 }
@@ -191,7 +192,7 @@ namespace Hotelaria.WebAPI.Controllers
             {
                 var response = await _mediator.Send(new DeletaUsuarioCommand { Id = id });
 
-                if (response.Contains("não encontrado"))
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
                 {
                     return NotFound();
                 }

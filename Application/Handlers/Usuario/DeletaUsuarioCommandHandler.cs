@@ -1,4 +1,5 @@
 ﻿using Hotelaria.Application.Commands;
+using Hotelaria.Application.Messages;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Notifications;
 using Hotelaria.Domain.Interfaces;
@@ -30,17 +31,17 @@ namespace Hotelaria.Application.Handlers
 
                 await _mediator.Publish(new UsuarioExcluidoNotification { Id = request.Id });
 
-                return await Task.FromResult("Usuário excluído com sucesso");
+                return await Task.FromResult(ResultadoOperacaoMessage.Sucesso);
             }
             catch (KeyNotFoundException ex)
             {
                 await _mediator.Publish(new ErroNotification { Excecao = ex.Message, PilhaErro = ex.StackTrace });
-                return await Task.FromResult("Usuário não encontrado");
+                return await Task.FromResult(ResultadoOperacaoMessage.NaoEncontrado);
             }
             catch (Exception ex)
             {
                 await _mediator.Publish(new ErroNotification { Excecao = ex.Message, PilhaErro = ex.StackTrace });
-                return await Task.FromResult("Ocorreu um erro no momento da exclusão");
+                return await Task.FromResult(ResultadoOperacaoMessage.ErroInterno);
             }
         }
     }

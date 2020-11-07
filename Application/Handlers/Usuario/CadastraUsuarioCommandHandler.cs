@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Hotelaria.Application.Notifications;
+using Hotelaria.Application.Messages;
 
 namespace Hotelaria.Application.Handlers
 {
@@ -50,12 +51,12 @@ namespace Hotelaria.Application.Handlers
                     Telefone = request.Nome
                 });
 
-                return await Task.FromResult("Usuário criado com sucesso.");
+                return await Task.FromResult(ResultadoOperacaoMessage.Sucesso);
             }
             catch (Exception ex)
             {
                 await _mediator.Publish(new ErroNotification { Excecao = ex.Message, PilhaErro = ex.StackTrace });
-                return await Task.FromResult("Ocorreu um erro no momento da criação");
+                return await Task.FromResult(ResultadoOperacaoMessage.ErroInterno);
             }
         }
     }

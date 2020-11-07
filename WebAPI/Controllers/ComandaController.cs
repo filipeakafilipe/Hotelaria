@@ -56,29 +56,29 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Retorna todas comandas
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpGet("todos")]
-        //public async Task<ActionResult<List<ComandaVO>>> GetTodos()
-        //{
-        //    try
-        //    {
-        //        var comandas = await _mediator.Send(new GetTodasComandasQuery());
+        /// <summary>
+        /// Retorna todas comandas
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("todos")]
+        public async Task<ActionResult<List<ComandaVO>>> GetTodos()
+        {
+            try
+            {
+                var comandas = await _mediator.Send(new GetTodasComandasQuery());
 
-        //        if (comandas.Count == 0)
-        //        {
-        //            return NotFound();
-        //        }
+                if (comandas.Count == 0)
+                {
+                    return NotFound();
+                }
 
-        //        return Ok(comandas);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(comandas);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         ///// <summary>
         ///// Cadastrar nova comanda

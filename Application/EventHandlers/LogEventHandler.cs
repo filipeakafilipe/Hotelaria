@@ -41,5 +41,21 @@ namespace Hotelaria.Application.EventHandlers
                 Console.WriteLine($"CRIACAO: '{notification.Id} - {notification.Nome} - {notification.Observacoes} - {notification.Preco}'");
             });
         }
+
+        public Task Handle(ServicoAtualizadoNotification notification, CancellationToken cancellationToken)
+        {
+            return Task.Run(() =>
+            {
+                Console.WriteLine($"ALTERAÇÃO: '{notification.Id} - {notification.Nome} - {notification.Observacoes} - {notification.Preco}'");
+            });
+        }
+
+        public Task Handle(ServicoExcluidoNotification notification, CancellationToken cancellationToken)
+        {
+            return Task.Run(() =>
+            {
+                Console.WriteLine($"EXCLUSAO: '{notification.Id}'");
+            });
+        }
     }
 }

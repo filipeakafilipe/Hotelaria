@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hotelaria.Application.Commands;
+using Hotelaria.Application.Messages;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Queries;
 using Hotelaria.Domain.Interfaces;
@@ -90,6 +91,34 @@ namespace Hotelaria.WebAPI.Controllers
             try
             {
                 var response = await _mediator.Send(command);
+
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Atualiza as informações de um serviço
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Atualizar(int id, AtualizaServicoCommand command)
+        {
+            try
+            {
+                command.Id = id;
+
+                var response = await _mediator.Send(command);
+
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
+                {
+                    return NotFound();
+                }
 
                 return Ok(response);
             }

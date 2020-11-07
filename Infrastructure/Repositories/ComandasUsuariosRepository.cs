@@ -23,19 +23,26 @@ namespace Hotelaria.Infrastructure.Repositories
         {
             var comandaUsuario = mapper.Map<ComandasUsuarios>(Get(id));
 
-            comandaUsuario.Comanda = mapper.Map<Comanda>(entidadeVO.Comanda);
-            comandaUsuario.Usuario = mapper.Map<Usuario>(entidadeVO.Usuario);
-            comandaUsuario.ComandaId = entidadeVO.ComandaId;
-            comandaUsuario.UsuarioId = entidadeVO.UsuarioId;
+            if (comandaUsuario != null)
+            {
+                comandaUsuario.Comanda = mapper.Map<Comanda>(entidadeVO.Comanda);
+                comandaUsuario.Usuario = mapper.Map<Usuario>(entidadeVO.Usuario);
+                comandaUsuario.ComandaId = entidadeVO.ComandaId;
+                comandaUsuario.UsuarioId = entidadeVO.UsuarioId;
 
-            db.Entry(comandaUsuario).State = EntityState.Modified;
+                db.Entry(comandaUsuario).State = EntityState.Modified;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public ComandasUsuariosVO Get(int id)
         {
-            return mapper.Map<ComandasUsuariosVO>(db.ComandasUsuarios.Include(c => c.Comanda).Include(c => c.Usuario).FirstOrDefault(c => c.Id == id));
+            return mapper.Map<ComandasUsuariosVO>(db.ComandasUsuarios.Include(c => c.Comanda).Include(c => c.Usuario).AsNoTracking().FirstOrDefault(c => c.Id == id));
         }
 
         public List<ComandasUsuariosVO> GetAll()

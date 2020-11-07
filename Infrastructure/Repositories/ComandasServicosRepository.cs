@@ -23,20 +23,27 @@ namespace Hotelaria.Infrastructure.Repositories
         {
             var comandaServico = mapper.Map<ComandasServicos>(Get(id));
 
-            comandaServico.Comanda = mapper.Map<Comanda>(entidadeVO.Comanda);
-            comandaServico.Servico = mapper.Map<Servico>(entidadeVO.Servico);
-            comandaServico.ComandaId = entidadeVO.ComandaId;
-            comandaServico.ServicoId = entidadeVO.ServicoId;
-            comandaServico.Quantidade = entidadeVO.Quantidade;
+            if (comandaServico != null)
+            {
+                comandaServico.Comanda = mapper.Map<Comanda>(entidadeVO.Comanda);
+                comandaServico.Servico = mapper.Map<Servico>(entidadeVO.Servico);
+                comandaServico.ComandaId = entidadeVO.ComandaId;
+                comandaServico.ServicoId = entidadeVO.ServicoId;
+                comandaServico.Quantidade = entidadeVO.Quantidade;
 
-            db.Entry(comandaServico).State = EntityState.Modified;
+                db.Entry(comandaServico).State = EntityState.Modified;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public ComandasServicosVO Get(int id)
         {
-            return mapper.Map<ComandasServicosVO>(db.ComandasServicos.Include(c => c.Comanda).Include(c => c.Servico).FirstOrDefault(c => c.Id == id));
+            return mapper.Map<ComandasServicosVO>(db.ComandasServicos.Include(c => c.Comanda).Include(c => c.Servico).AsNoTracking().FirstOrDefault(c => c.Id == id));
         }
 
         public List<ComandasServicosVO> GetAll()

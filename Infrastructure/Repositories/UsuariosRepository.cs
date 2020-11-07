@@ -46,11 +46,15 @@ namespace Hotelaria.Infrastructure.Repositories
 
                 db.SaveChanges();
             }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public UsuarioVO Get(int id)
         {
-            return mapper.Map<UsuarioVO>(db.Usuarios.FirstOrDefault(u => u.Id == id));
+            return mapper.Map<UsuarioVO>(db.Usuarios.AsNoTracking().FirstOrDefault(u => u.Id == id));
         }
 
         public List<UsuarioVO> Get(string cpf)

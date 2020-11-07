@@ -149,5 +149,33 @@ namespace Hotelaria.WebAPI.Controllers
                 return BadRequest();
             }
         }
+
+        /// <summary>
+        /// Atualiza as informações de um usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Atualizar(int id, AtualizaUsuarioCommand command)
+        {
+            try
+            {
+                command.Id = id;
+
+                var response = await _mediator.Send(command);
+
+                if(response.Contains("não encontrado"))
+                {
+                    return NotFound();
+                }
+
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

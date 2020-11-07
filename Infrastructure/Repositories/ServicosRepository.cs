@@ -21,20 +21,27 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public void Atualizar(int id, ServicoVO entidadeVO)
         {
-            var entidade = mapper.Map<Servico>(Get(id));
+            var servico = mapper.Map<Servico>(Get(id));
 
-            entidade.Nome = entidadeVO.Nome;
-            entidade.Observacoes = entidadeVO.Observacoes;
-            entidade.Preco = entidadeVO.Preco;
+            if (servico != null)
+            {
+                servico.Nome = entidadeVO.Nome;
+                servico.Observacoes = entidadeVO.Observacoes;
+                servico.Preco = entidadeVO.Preco;
 
-            db.Entry(entidade).State = EntityState.Modified;
+                db.Entry(servico).State = EntityState.Modified;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public ServicoVO Get(int id)
         {
-            return mapper.Map<ServicoVO>(db.Servicos.FirstOrDefault(s => s.Id == id));
+            return mapper.Map<ServicoVO>(db.Servicos.AsNoTracking().FirstOrDefault(s => s.Id == id));
         }
 
         public List<ServicoVO> GetAll()

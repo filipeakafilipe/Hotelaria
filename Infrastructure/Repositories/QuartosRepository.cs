@@ -23,17 +23,24 @@ namespace Hotelaria.Infrastructure.Repositories
         {
             var quarto = mapper.Map<Quarto>(Get(id));
 
-            quarto.Nome = entidadeVO.Nome;
-            quarto.Preco = entidadeVO.Preco;
+            if (quarto != null)
+            {
+                quarto.Nome = entidadeVO.Nome;
+                quarto.Preco = entidadeVO.Preco;
 
-            db.Entry(quarto).State = EntityState.Modified;
+                db.Entry(quarto).State = EntityState.Modified;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public QuartoVO Get(int id)
         {
-            return mapper.Map<QuartoVO>(db.Quartos.FirstOrDefault(q => q.Id == id));
+            return mapper.Map<QuartoVO>(db.Quartos.AsNoTracking().FirstOrDefault(q => q.Id == id));
         }
 
         public List<QuartoVO> GetAll()

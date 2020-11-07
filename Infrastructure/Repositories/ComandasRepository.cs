@@ -23,19 +23,26 @@ namespace Hotelaria.Infrastructure.Repositories
         {
             var comanda = mapper.Map<Comanda>(Get(id));
 
-            comanda.Ativa = entidadeVO.Ativa;
-            comanda.DataAbertura = entidadeVO.DataAbertura;
-            comanda.DataEncerramento = entidadeVO.DataEncerramento;
-            comanda.Dias = entidadeVO.Dias;
+            if (comanda != null)
+            {
+                comanda.Ativa = entidadeVO.Ativa;
+                comanda.DataAbertura = entidadeVO.DataAbertura;
+                comanda.DataEncerramento = entidadeVO.DataEncerramento;
+                comanda.Dias = entidadeVO.Dias;
 
-            db.Entry(comanda).State = EntityState.Modified;
+                db.Entry(comanda).State = EntityState.Modified;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public ComandaVO Get(int id)
         {
-            return mapper.Map<ComandaVO>(db.Comandas.FirstOrDefault(c => c.Id == id));
+            return mapper.Map<ComandaVO>(db.Comandas.AsNoTracking().FirstOrDefault(c => c.Id == id));
         }
 
         public List<ComandaVO> GetAll()

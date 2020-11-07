@@ -31,7 +31,6 @@ namespace Hotelaria.WebAPI.Controllers
             _context = context;
         }
 
-
         /// <summary>
         /// Retorna comanda por seu id
         /// </summary>

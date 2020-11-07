@@ -21,7 +21,7 @@ namespace Hotelaria.WebAPI.Controllers
         private readonly IServicosRepository<ServicoVO> _context;
 
         /// <summary>
-        /// Responsável por endpoints referentes ao Usuário
+        /// Responsável por endpoints referentes ao Serviço
         /// </summary>
         /// <param name="mediator"></param>
         /// <param name="context"></param>

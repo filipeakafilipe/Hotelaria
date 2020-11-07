@@ -93,6 +93,11 @@ namespace Hotelaria.WebAPI.Controllers
             {
                 var response = await _mediator.Send(command);
 
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
+
                 return Ok(response);
             }
             catch (Exception)
@@ -101,66 +106,66 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Atualiza as informações de um serviço de uma comanda
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpPatch("{id}")]
-        //public async Task<ActionResult> Atualizar(int id, AtualizaComandaServicoCommand command)
-        //{
-        //    try
-        //    {
-        //        command.Id = id;
+        /// <summary>
+        /// Atualiza as informações de um serviço de uma comanda
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> Atualizar(int id, AtualizaComandaServicoCommand command)
+        {
+            try
+            {
+                command.Id = id;
 
-        //        var response = await _mediator.Send(command);
+                var response = await _mediator.Send(command);
 
-        //        if (response == ResultadoOperacaoMessage.NaoEncontrado)
-        //        {
-        //            return NotFound();
-        //        }
-        //        if (response == ResultadoOperacaoMessage.ErroInterno)
-        //        {
-        //            return BadRequest();
-        //        }
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
+                {
+                    return NotFound();
+                }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
-        ///// <summary>
-        ///// Deletar as informações de um serviço de uma comanda
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> Deletar(int id)
-        //{
-        //    try
-        //    {
-        //        var response = await _mediator.Send(new DeletaComandaServicoCommand { Id = id });
+        /// <summary>
+        /// Deletar as informações de um serviço de uma comanda
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            try
+            {
+                var response = await _mediator.Send(new DeletaComandaServicoCommand { Id = id });
 
-        //        if (response == ResultadoOperacaoMessage.NaoEncontrado)
-        //        {
-        //            return NotFound();
-        //        }
-        //        if (response == ResultadoOperacaoMessage.ErroInterno)
-        //        {
-        //            return BadRequest();
-        //        }
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
+                {
+                    return NotFound();
+                }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

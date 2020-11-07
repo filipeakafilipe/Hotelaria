@@ -21,7 +21,6 @@ namespace Hotelaria.Application.Handlers
             this._repository = repository;
         }
 
-
         public async Task<List<ComandaVO>> Handle(GetTodasComandasQuery request, CancellationToken cancellationToken)
         {
             return _repository.GetAll();

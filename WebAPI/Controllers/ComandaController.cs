@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotelaria.Application.Commands;
 using Hotelaria.Application.Messages;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Queries;
@@ -80,25 +81,25 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Cadastrar nova comanda
-        ///// </summary>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpPost]
-        //public async Task<IActionResult> Post(CadastraComandaCommand command)
-        //{
-        //    try
-        //    {
-        //        var response = await _mediator.Send(command);
+        /// <summary>
+        /// Cadastrar nova comanda
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Post(CadastraComandaCommand command)
+        {
+            try
+            {
+                var response = await _mediator.Send(command);
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         ///// <summary>
         ///// Atualiza as informações de uma comanda

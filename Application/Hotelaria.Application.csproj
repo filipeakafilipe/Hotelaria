@@ -13,9 +13,4 @@
     <ProjectReference Include="..\Domain\Hotelaria.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\Servico\" />
-    <Folder Include="Notifications\Servico\" />
-  </ItemGroup>
-
 </Project>

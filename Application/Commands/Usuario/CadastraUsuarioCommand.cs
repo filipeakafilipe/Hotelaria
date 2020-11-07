@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Hotelaria.Application.Commands
 {
-    public class CadastraUsuarioCommand:IRequest<string>
+    public class CadastraUsuarioCommand : IRequest<string>
     {
         public int Id { get; set; }
         public string Login { get; set; }

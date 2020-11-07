@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hotelaria.Application.Commands;
 using Hotelaria.Application.Models;
 using Hotelaria.Application.Queries;
 using Hotelaria.Domain.Interfaces;
@@ -71,6 +72,26 @@ namespace Hotelaria.WebAPI.Controllers
                 }
 
                 return Ok(servicos);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Cadastrar novo serviço
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Post(CadastraServicoCommand command)
+        {
+            try
+            {
+                var response = await _mediator.Send(command);
+
+                return Ok(response);
             }
             catch (Exception)
             {

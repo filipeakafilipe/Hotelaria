@@ -33,5 +33,13 @@ namespace Hotelaria.Application.EventHandlers
                 Console.WriteLine($"EXCLUSAO: '{notification.Id}'");
             });
         }
+
+        public Task Handle(ServicoCriadoNotification notification, CancellationToken cancellationToken)
+        {
+            return Task.Run(() =>
+            {
+                Console.WriteLine($"CRIACAO: '{notification.Id} - {notification.Nome} - {notification.Observacoes} - {notification.Preco}'");
+            });
+        }
     }
 }

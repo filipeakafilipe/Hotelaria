@@ -12,37 +12,35 @@ using System.Threading.Tasks;
 
 namespace Hotelaria.Application.Handlers
 {
-    public class AtualizaComandaServicoCommandHandler : IRequestHandler<AtualizaComandaServicoCommand, string>
+    public class AtualizaComandaUsuarioCommandHandler : IRequestHandler<AtualizaComandaUsuarioCommand, string>
     {
         private readonly IMediator _mediator;
-        private readonly IComandasServicosRepository<ComandasServicosVO> _repository;
+        private readonly IComandasUsuariosRepository<ComandasUsuariosVO> _repository;
 
-        public AtualizaComandaServicoCommandHandler(IMediator mediator, IComandasServicosRepository<ComandasServicosVO> repository)
+        public AtualizaComandaUsuarioCommandHandler(IMediator mediator, IComandasUsuariosRepository<ComandasUsuariosVO> repository)
         {
             this._mediator = mediator;
             this._repository = repository;
         }
 
-        public async Task<string> Handle(AtualizaComandaServicoCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(AtualizaComandaUsuarioCommand request, CancellationToken cancellationToken)
         {
-            var comandaServico = new ComandasServicosVO
+            var comandaUsuario = new ComandasUsuariosVO
             {
                 Id = request.Id,
                 ComandaId = request.ComandaId,
-                ServicoId = request.ServicoId,
-                Quantidade = request.Quantidade
+                UsuarioId = request.UsuarioId
             };
 
             try
             {
-                _repository.Atualizar(request.Id, comandaServico);
+                _repository.Atualizar(request.Id, comandaUsuario);
 
-                await _mediator.Publish(new ComandaServicoAtualizadoNotification
+                await _mediator.Publish(new ComandaUsuarioAtualizadoNotification
                 {
                     Id = request.Id,
                     ComandaId = request.ComandaId,
-                    ServicoId = request.ServicoId,
-                    Quantidade = request.Quantidade
+                    UsuarioId = request.UsuarioId
                 });
 
                 return await Task.FromResult(ResultadoOperacaoMessage.Sucesso);

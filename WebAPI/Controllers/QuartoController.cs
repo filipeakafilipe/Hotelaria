@@ -56,29 +56,29 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Retorna todos quartos
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpGet("todos")]
-        //public async Task<ActionResult<List<QuartoVO>>> GetTodos()
-        //{
-        //    try
-        //    {
-        //        var quartos = await _mediator.Send(new GetTodosQuartosQuery());
+        /// <summary>
+        /// Retorna todos quartos
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("todos")]
+        public async Task<ActionResult<List<QuartoVO>>> GetTodos()
+        {
+            try
+            {
+                var quartos = await _mediator.Send(new GetTodosQuartosQuery());
 
-        //        if (quartos.Count == 0)
-        //        {
-        //            return NotFound();
-        //        }
+                if (quartos.Count == 0)
+                {
+                    return NotFound();
+                }
 
-        //        return Ok(quartos);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(quartos);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
 
         ///// <summary>
         ///// Cadastrar novo quarto

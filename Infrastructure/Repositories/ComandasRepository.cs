@@ -52,11 +52,11 @@ namespace Hotelaria.Infrastructure.Repositories
 
         public void Remover(int id)
         {
-            var quarto = mapper.Map<Quarto>(Get(id));
+            var comanda = mapper.Map<Comanda>(Get(id));
 
-            if (quarto != null)
+            if (comanda != null)
             {
-                db.Quartos.Remove(quarto);
+                db.Comandas.Remove(comanda);
 
                 db.SaveChanges();
             }

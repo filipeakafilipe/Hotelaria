@@ -170,6 +170,10 @@ namespace Hotelaria.WebAPI.Controllers
                 {
                     return NotFound();
                 }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
 
                 return Ok(response);
             }
@@ -195,6 +199,10 @@ namespace Hotelaria.WebAPI.Controllers
                 if (response == ResultadoOperacaoMessage.NaoEncontrado)
                 {
                     return NotFound();
+                }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
                 }
 
                 return Ok(response);

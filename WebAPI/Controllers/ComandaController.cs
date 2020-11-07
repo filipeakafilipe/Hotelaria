@@ -120,6 +120,10 @@ namespace Hotelaria.WebAPI.Controllers
                 {
                     return NotFound();
                 }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
 
                 return Ok(response);
             }
@@ -129,30 +133,34 @@ namespace Hotelaria.WebAPI.Controllers
             }
         }
 
-        ///// <summary>
-        ///// Deletar as informações de uma comanda
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> Deletar(int id)
-        //{
-        //    try
-        //    {
-        //        var response = await _mediator.Send(new DeletaComandaCommand { Id = id });
+        /// <summary>
+        /// Deletar as informações de uma comanda
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            try
+            {
+                var response = await _mediator.Send(new DeletaComandaCommand { Id = id });
 
-        //        if (response == ResultadoOperacaoMessage.NaoEncontrado)
-        //        {
-        //            return NotFound();
-        //        }
+                if (response == ResultadoOperacaoMessage.NaoEncontrado)
+                {
+                    return NotFound();
+                }
+                if (response == ResultadoOperacaoMessage.ErroInterno)
+                {
+                    return BadRequest();
+                }
 
-        //        return Ok(response);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(response);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

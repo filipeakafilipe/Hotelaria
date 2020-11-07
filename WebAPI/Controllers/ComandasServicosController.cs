@@ -31,9 +31,8 @@ namespace Hotelaria.WebAPI.Controllers
             _context = context;
         }
 
-
         /// <summary>
-        /// Retorna serviços da comanda por seu id
+        /// Retorna um serviço da comanda por seu id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -58,7 +57,7 @@ namespace Hotelaria.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Retorna todos serviços anexadas às comandas
+        /// Retorna todos serviços anexados a comandas
         /// </summary>
         /// <returns></returns>
         [HttpGet("todos")]

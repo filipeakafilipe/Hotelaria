@@ -8,21 +8,30 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tests
+namespace Hotelaria.Tests
 {
-    public class Tests
+    public class UsuarioApiTest
     {
+        public int IdInvalido { get; set; }
+        public int IdValido { get; set; }
+        public string CpfInvalido { get; set; }
+        public string CpfValido { get; set; }
+
         [SetUp]
         public void Setup()
         {
+            IdInvalido = 0;
+            IdValido = 5;
+            CpfInvalido = "a";
+            CpfValido = "string";
         }
 
         [Test]
-        public async Task TestGetByIdFail()
+        public async Task TestGetUsuarioByIdFail()
         {
             using (var client = new TestClientProvider().Client)
             {
-                var usuarioId = 0;
+                var usuarioId = IdInvalido;
 
                 var response = await client.GetAsync($"api/usuario/{usuarioId}");
 
@@ -31,12 +40,12 @@ namespace Tests
         }
 
         [Test]
-        public async Task TestGetByIdSucess()
+        public async Task TestGetUsuarioByIdSucess()
         {
             using (var client = new TestClientProvider().Client)
             {
-                //Utilizar um Id válido, já presente no banco de dados
-                var usuarioId = 5;
+                //Utilizar um Id válido, já presente no banco de dados, caso contrário o teste falhará
+                var usuarioId = IdValido;
 
                 var response = await client.GetAsync($"api/usuario/{usuarioId}");
 
@@ -47,7 +56,7 @@ namespace Tests
         }
 
         [Test]
-        public async Task TestGetByCpfFail()
+        public async Task TestGetUsuariosByCpfFail()
         {
             using (var client = new TestClientProvider().Client)
             {
@@ -60,12 +69,12 @@ namespace Tests
         }
 
         [Test]
-        public async Task TestGetByCpfNaoEncontradoFail()
+        public async Task TestGetUsuariosByCpfNaoEncontradoFail()
         {
             using (var client = new TestClientProvider().Client)
             {
-                // Utilizar um CPF inválido, não presente no banco de dados
-                var cpf = "a";
+                // Utilizar um CPF inválido, não presente no banco de dados, caso contrário o teste falhará
+                var cpf = CpfInvalido;
 
                 var response = await client.GetAsync($"api/usuario/cpf/{cpf}");
 
@@ -74,12 +83,12 @@ namespace Tests
         }
 
         [Test]
-        public async Task TestGetByCpfSucess()
+        public async Task TestGetUsuariosByCpfSucess()
         {
             using (var client = new TestClientProvider().Client)
             {
-                // Utilizar um CPF válido, presente no banco de dados
-                var cpf = "string";
+                // Utilizar um CPF válido, presente no banco de dados, caso contrário o teste falhará
+                var cpf = CpfValido;
 
                 var response = await client.GetAsync($"api/usuario/cpf/{cpf}");
 
@@ -90,7 +99,7 @@ namespace Tests
         }
 
         [Test]
-        public async Task TestGetTodosSucess()
+        public async Task TestGetTodosUsuariosSucess()
         {
             using (var client = new TestClientProvider().Client)
             {
@@ -131,8 +140,8 @@ namespace Tests
         {
             using (var client = new TestClientProvider().Client)
             {
-                //Utilizar um Id válido, já presente no banco de dados
-                var usuarioId = 5;
+                //Utilizar um Id válido, já presente no banco de dados, caso contrário o teste falhará
+                var usuarioId = IdValido;
 
                 var response = await client.PatchAsync($"api/usuario/{usuarioId}", new StringContent(
                         JsonConvert.SerializeObject(new Usuario()
@@ -158,8 +167,8 @@ namespace Tests
         {
             using (var client = new TestClientProvider().Client)
             {
-                //Utilizar um Id inválido, não presente no banco de dados
-                var usuarioId = 0;
+                //Utilizar um Id inválido, não presente no banco de dados, caso contrário o teste falhará
+                var usuarioId = IdInvalido;
 
                 var response = await client.PatchAsync($"api/usuario/{usuarioId}", new StringContent(
                         JsonConvert.SerializeObject(new Usuario()
@@ -183,8 +192,8 @@ namespace Tests
         {
             using (var client = new TestClientProvider().Client)
             {
-                //Utilizar um Id inválido, não presente no banco de dados
-                var usuarioId = 0;
+                //Utilizar um Id inválido, não presente no banco de dados, caso contrário o teste falhará
+                var usuarioId = IdInvalido;
 
                 var response = await client.DeleteAsync($"api/usuario/{usuarioId}");
 

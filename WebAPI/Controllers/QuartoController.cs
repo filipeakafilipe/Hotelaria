@@ -120,7 +120,7 @@ namespace Hotelaria.WebAPI.Controllers
                 {
                     return NotFound();
                 }
-                if (response == ResultadoOperacaoMessage.ErroInterno)
+                if (response == ResultadoOperacaoMessage.RequisicaoInvalida)
                 {
                     return BadRequest();
                 }
@@ -150,7 +150,7 @@ namespace Hotelaria.WebAPI.Controllers
                 {
                     return NotFound();
                 }
-                if (response == ResultadoOperacaoMessage.ErroInterno)
+                if (response == ResultadoOperacaoMessage.RequisicaoInvalida)
                 {
                     return BadRequest();
                 }

@@ -10,6 +10,6 @@ namespace Hotelaria.Application.Messages
 
         public static readonly string NaoEncontrado = "Entidade não encontrada.";
 
-        public static readonly string ErroInterno = "Ocorreu um erro na execução da operação.";
+        public static readonly string RequisicaoInvalida = "Requisição inválida.";
     }
 }

@@ -55,7 +55,7 @@ namespace Hotelaria.Application.Handlers.Servico
             catch (Exception ex)
             {
                 await _mediator.Publish(new ErroNotification { Excecao = ex.Message, PilhaErro = ex.StackTrace });
-                return await Task.FromResult(ResultadoOperacaoMessage.ErroInterno);
+                return await Task.FromResult(ResultadoOperacaoMessage.RequisicaoInvalida);
             }
         }
     }

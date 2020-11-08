@@ -20,7 +20,7 @@ using Hotelaria.Infrastructure.Repositories;
 using MediatR;
 using Hotelaria.Application.Commands;
 
-namespace WebAPI
+namespace Hotelaria.WebAPI
 {
     public class Startup
     {

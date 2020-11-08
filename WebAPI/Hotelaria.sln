@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelaria.WebAPI", "Hotelaria.WebAPI.csproj", "{3F0C6AC5-F406-4617-BE79-BAEE511012F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelaria.Application", "..\Application\Hotelaria.Application.csproj", "{EC3DF420-58F9-40A1-80C9-9129DFFB3D39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelaria.Application", "..\Application\Hotelaria.Application.csproj", "{EC3DF420-58F9-40A1-80C9-9129DFFB3D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelaria.Infrastructure", "..\Infrastructure\Hotelaria.Infrastructure.csproj", "{19B5DDC4-E0D8-41A4-9CEA-328969A5736D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelaria.Infrastructure", "..\Infrastructure\Hotelaria.Infrastructure.csproj", "{19B5DDC4-E0D8-41A4-9CEA-328969A5736D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelaria.Domain", "..\Domain\Hotelaria.Domain.csproj", "{4542F6F0-4DD4-4EA6-A6B6-92ADD286D087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelaria.Domain", "..\Domain\Hotelaria.Domain.csproj", "{4542F6F0-4DD4-4EA6-A6B6-92ADD286D087}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelaria.Services", "..\Services\Hotelaria.Services.csproj", "{B1B746F6-0E1C-4C6E-8982-F60856F3E6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotelaria.Services", "..\Services\Hotelaria.Services.csproj", "{B1B746F6-0E1C-4C6E-8982-F60856F3E6AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotelaria.Tests", "..\Tests\Hotelaria.Tests.csproj", "{0492842D-F291-4EA8-8C83-65A871FBDFEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B1B746F6-0E1C-4C6E-8982-F60856F3E6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1B746F6-0E1C-4C6E-8982-F60856F3E6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1B746F6-0E1C-4C6E-8982-F60856F3E6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0492842D-F291-4EA8-8C83-65A871FBDFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0492842D-F291-4EA8-8C83-65A871FBDFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0492842D-F291-4EA8-8C83-65A871FBDFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0492842D-F291-4EA8-8C83-65A871FBDFEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
